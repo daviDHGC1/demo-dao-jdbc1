@@ -1,17 +1,22 @@
 package application;
 
-import java.time.LocalDateTime;
-
-import model.entities.Department;
+import db.DB;
+import model.dao.impl.SellerDaoJDBC;
 import model.entities.Seller;
 
 public class Program {
 
 	public static void main(String[] args) {
-		Department obj1 = new Department(1, "eletronics");
-		Seller seller = new Seller(123, 
-				"Francisco", "francisco@gmail.com", LocalDateTime.now(), 1000.00, obj1);
+		
+		Seller seller = new Seller();
+		SellerDaoJDBC sellerDaoJDBC = new SellerDaoJDBC(DB.getConnection());
+		
+		//Finding by id
+		seller = sellerDaoJDBC.findById(11);
 		System.out.println(seller);
+		
+		
+		
 		
 	}
 

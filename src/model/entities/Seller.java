@@ -1,24 +1,24 @@
 package model.entities;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Date;
 import java.util.Objects;
 
-public class Seller implements Serializable{
-	
+public class Seller implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String name;
 	private String email;
-	private LocalDateTime date;
+	private Date date;
 	private Double baseSalary;
-	
+
 	private Department department;
-	
+
 	public Seller() {
 	}
 
-	public Seller(Integer id, String name, String email, LocalDateTime date, Double baseSalary, Department department) {
+	public Seller(Integer id, String name, String email, Date date, Double baseSalary, Department department) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
@@ -51,11 +51,11 @@ public class Seller implements Serializable{
 		this.email = email;
 	}
 
-	public LocalDateTime getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDateTime date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
@@ -91,7 +91,13 @@ public class Seller implements Serializable{
 		return "Seller [id=" + id + ", name=" + name + ", email=" + email + ", date=" + date + ", baseSalary="
 				+ baseSalary + ", department=" + department + "]";
 	}
-	
-	
-	
+
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
 }
