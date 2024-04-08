@@ -1,5 +1,6 @@
 package application;
 
+import java.util.Date;
 import java.util.List;
 
 import db.DB;
@@ -16,7 +17,7 @@ public class Program {
 		
 		//Finding by id
 		System.out.println("Finding by Id");
-		seller = sellerDaoJDBC.findById(11);
+		seller = sellerDaoJDBC.findById(10);
 		System.out.println(seller);
 		
 		row();
@@ -32,8 +33,15 @@ public class Program {
 		List<Seller> list = sellerDaoJDBC.findAll();
 		list.stream().forEach(System.out::println );
 		
+		row();
+
+		Department department = new Department(2, null);
+		Seller newSeller = new Seller(null, "Greg", "greg@gmail.com",  new Date(), 4000.0, department);
+		sellerDaoJDBC.insert(newSeller);
+		System.out.println("Inserted! New id = " + newSeller.getId());
+		
 	}
 	public static void row() {
-		System.out.println("============================================================");
+		System.out.println("=================================================================================================================================================");
 	}
 }
