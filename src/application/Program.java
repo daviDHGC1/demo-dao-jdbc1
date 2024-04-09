@@ -34,12 +34,18 @@ public class Program {
 		list.stream().forEach(System.out::println );
 		
 		row();
-
+		
+		/*System.out.println("Inserting new datas!");
 		Department department = new Department(2, null);
 		Seller newSeller = new Seller(null, "Greg", "greg@gmail.com",  new Date(), 4000.0, department);
 		sellerDaoJDBC.insert(newSeller);
-		System.out.println("Inserted! New id = " + newSeller.getId());
+		System.out.println("Inserted! New id = " + newSeller.getId());*/
 		
+		Seller updateSeller = sellerDaoJDBC.findById(10);
+		updateSeller.setName("John Árias");
+		updateSeller.setBaseSalary(9000.0);
+		sellerDaoJDBC.update(updateSeller);
+		System.out.println("Update seller completed!");
 	}
 	public static void row() {
 		System.out.println("=================================================================================================================================================");
