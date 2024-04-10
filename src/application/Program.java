@@ -1,11 +1,9 @@
 package application;
 
-import java.util.Date;
 import java.util.List;
 
-import db.DB;
-import model.dao.impl.SellerDaoJDBC;
-import model.entities.Department;
+import model.dao.DaoFactory;
+import model.dao.SellerDao;
 import model.entities.Seller;
 
 public class Program {
@@ -13,7 +11,7 @@ public class Program {
 	public static void main(String[] args) {
 		
 		Seller seller = new Seller();
-		SellerDaoJDBC sellerDaoJDBC = new SellerDaoJDBC(DB.getConnection());
+		SellerDao sellerDaoJDBC = DaoFactory.createSellerDao();
 		
 		//Finding by id
 		System.out.println("Finding by Id");
@@ -41,11 +39,18 @@ public class Program {
 		sellerDaoJDBC.insert(newSeller);
 		System.out.println("Inserted! New id = " + newSeller.getId());*/
 		
+		System.out.println("Updating seller!");
 		Seller updateSeller = sellerDaoJDBC.findById(10);
 		updateSeller.setName("John Árias");
 		updateSeller.setBaseSalary(9000.0);
 		sellerDaoJDBC.update(updateSeller);
 		System.out.println("Update seller completed!");
+		
+		row();
+		
+		//System.out.println("Deleting seller by id!");
+		//sellerDaoJDBC.deleteById(6);
+		//System.out.println("Delete seller completed!");
 	}
 	public static void row() {
 		System.out.println("=================================================================================================================================================");
